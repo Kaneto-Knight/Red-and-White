@@ -1,0 +1,47 @@
+function start() {
+    moveToStart();
+    for(var i = 0; i < 6; i++){
+        paintRedLine();
+        turnNorth();
+        move();
+        turnRight();
+        paintWhiteLine();
+    }
+    paintRedLine();
+}
+
+function moveToStart(){
+    turnNorth();
+    for(var i = 0; i < 7; i++){
+        move();
+    }
+}
+
+function paintRedLine(){
+    turnRight();
+    while(frontIsClear()){
+        paint(Color.red);
+        move();
+    }
+    paint(Color.red);
+    turnNorth();
+    move();
+    turnLeft();
+    while(frontIsClear()){
+        paint(Color.red);
+        move();
+    }
+    paint(Color.red);
+}
+
+function paintWhiteLine(){
+    turnNorth();
+    move();
+    move();
+}
+
+function turnNorth(){
+    while(notFacingNorth()){
+        turnLeft();
+    }
+}
